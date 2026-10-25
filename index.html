@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">EkeVoki | Python Developer</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+
+    <div id="event-overlay"></div>
+    <div id="sakura-petals"></div>
+    <div id="halloween-pumpkins"></div>
+
+    <nav class="navbar">
+        <div class="mac-controls">
+            <span class="mac-btn red" onclick="closeSite()" title="Закрыть"></span>
+            <span class="mac-btn yellow" onclick="location.reload()" title="Перезагрузить"></span>
+            <span class="mac-btn green" onclick="toggleFullscreen()" title="Полный экран"></span>
+        </div>
+        <a href="#" class="nav-logo"><span class="accent">Eke</span>Voki</a>
+        
+        <div class="nav-links">
+            <a href="#about-text" data-i18n="nav_info">Info</a>
+            <a href="#skills" data-i18n="nav_skills">Скиллы</a>
+            <a href="#projects" data-i18n="nav_projects">Проекты</a>
+            <a href="#friends" data-i18n="nav_friends">Друзья</a>
+            <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
+        </div>
+
+        <div class="nav-controls">
+            <div class="nav-clock">
+                <span id="clock-time">00:00:00</span>
+                <span id="clock-date">01.01.2026</span>
+            </div>
+            <div class="lang-selector">
+                <button class="lang-btn" onclick="toggleLangMenu()">🌐 RU</button>
+                <div id="lang-dropdown" class="lang-dropdown hidden">
+                    <button onclick="setLang('ru')">🇷🇺 Русский</button>
+                    <button onclick="setLang('en')">🇬🇧 English</button>
+                    <button onclick="setLang('zh')">🇨🇳 中文</button>
+                </div>
+            </div>
+            <button class="settings-btn" onclick="toggleThemeMenu()" title="Сменить тему">🎨</button>
+        </div>
+    </nav>
+
+    <div id="theme-selector" class="theme-dropdown hidden">
+        <h2 data-i18n="theme_title">Выбери реальность</h2>
+        <div class="theme-grid">
+            <button class="theme-btn" onclick="setTheme('dark')"><span class="theme-icon">🌌</span><span class="theme-name">Start Theme</span></button>
+            <button class="theme-btn" onclick="setTheme('mac')"><span class="theme-icon">🍎</span><span class="theme-name">Mac</span></button>
+            <button class="theme-btn" onclick="setTheme('miku')"><span class="theme-icon">🎤</span><span class="theme-name">Miku</span></button>
+            <button class="theme-btn" onclick="setTheme('sakura')"><span class="theme-icon">🌸</span><span class="theme-name">Sakura</span></button>
+            <button class="theme-btn" onclick="setTheme('win98')"><span class="theme-icon">💾</span><span class="theme-name">Windows 98</span></button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="hero" id="about">
+            <img src="assets/avatar.png" alt="Avatar" class="avatar">
+            <div class="hero-text">
+                <h1>EkeVoki</h1>
+                <h2 data-i18n="hero_subtitle">Python Developer & Learner</h2>
+                <p data-i18n="hero_desc">Код — это моя творческая площадка. Пишу на Python, иногда на C++ и JS. Ищу стажировку и интересные проекты.</p>
+                <div class="birth-info">
+                    <p><span class="accent" data-i18n="hero_bdate">Дата рождения:</span> 23.10.2009</p>
+                    <p><span class="accent" data-i18n="hero_age">Сейчас мне:</span> <span id="dynamic-age">...</span> <span data-i18n="hero_years">лет</span></p>
+                </div>
+            </div>
+        </header>
+
+        <section class="content-section" id="about-text">
+            <h2 class="section-title" data-i18n="info_title">Info</h2>
+            <div class="win98-window main-info-window">
+                <div class="win98-titlebar">
+                    <span>Info.exe</span>
+                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                </div>
+                <div class="info-subsection win98-subwindow">
+                    <h3 class="info-subtitle" data-i18n="info_approach_title">Мой подход</h3>
+                    <p data-i18n="info_approach_text">Привет! Я начинающий разработчик на Python...</p>
+                </div>
+                <div class="info-subsection win98-subwindow">
+                    <h3 class="info-subtitle" data-i18n="info_hobbies_title">Увлечения</h3>
+                    <p data-i18n="info_hobbies_intro">Читаю манги, смотрю аниме...</p>
+                    <ul class="hobbies-list">
+                        <li><strong data-i18n="info_manga">Любимые манги:</strong> <span data-i18n="info_manga_list">...</span></li>
+                        <li><strong data-i18n="info_games">Любимые игры:</strong> <span data-i18n="info_games_list">...</span></li>
+                        <li><strong data-i18n="info_board">Настольные игры:</strong> <span data-i18n="info_board_list">...</span></li>
+                        <li><strong data-i18n="info_anime">Любимые аниме:</strong> <span data-i18n="info_anime_list">...</span></li>
+                    </ul>
+                </div>
+                <div class="info-subsection win98-subwindow">
+                    <h3 class="info-subtitle" data-i18n="info_spheres_title">Сферы интересов</h3>
+                    <p data-i18n="info_spheres_text">ML, Python код, написание сайтов, создание игр.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="skills">
+            <h2 class="section-title" data-i18n="skills_title">Скиллы</h2>
+            <div class="card win98-window">
+                <div class="win98-titlebar">
+                    <span>Skills.exe</span>
+                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                </div>
+                
+                <h3 class="skill-category" data-i18n="skills_langs">Языки программирования</h3>
+                <div class="skills-grid">
+                    <div class="skill-card snake-card">
+                        <div class="card-face" id="python-trigger"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+                        <div class="snake-lid"><div class="snake-game-area" id="python-game"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Snake" id="snake-head"></div></div>
+                    </div>
+                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><span>C++</span></div>
+                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span>JavaScript</span></div>
+                </div>
+
+                <h3 class="skill-category" data-i18n="skills_libs">Библиотеки и Фреймворки</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"><span>NumPy</span></div>
+                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"><span>Pandas</span></div>
+                </div>
+
+                <h3 class="skill-category" data-i18n="skills_tools">Инструменты</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><span>Git</span></div>
+                    <div class="skill-card"><img src="assets/renpy.png" alt="Ren'Py" style="object-fit: contain;"><span>Ren'Py</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="projects">
+            <h2 class="section-title" data-i18n="projects_title">Проекты</h2>
+            <div class="card win98-window">
+                <div class="win98-titlebar">
+                    <span>Projects.exe</span>
+                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                </div>
+                <div class="cassette-shelf">
+                    <div class="cassette active">
+                        <div class="cassette-spine"><span class="cassette-title">JapNameGenerator</span></div>
+                        <div class="cassette-card">
+                            <h3>JapNameGenerator</h3>
+                            <p data-i18n="project_japname_desc">Простой, но душевный генератор...</p>
+                            <a href="https://github.com/EkeVoki/JapNameGenerator" target="_blank" data-i18n="project_open">Открыть на GitHub</a>
+                        </div>
+                    </div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                    <div class="cassette end-card">
+                        <div class="cassette-spine"><span class="cassette-title">Конец</span></div>
+                        <div class="cassette-card end-card-info">
+                            <h3>О ты долистал до конца?</h3>
+                            <p>Да, тут нет проекта. Пока. Но будет. Что это будет? Может быть что-то полезное, может прикол сделанный за час - кто знает.</p>
+                            <p>Главное - что ты тут. Ну ладно, листай сайт дальше)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="friends">
+            <h2 class="section-title" data-i18n="friends_title">Друзья</h2>
+            <div class="card win98-window">
+                <div class="win98-titlebar">
+                    <span>Friends.exe</span>
+                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                </div>
+                <div class="friends-grid">
+                    <!-- ВЕНИАМИН -->
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/venya.jpg" alt="Veniamin"><span class="badge-icon">⭐</span></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_venya_name">Вениамин <span class="friend-badge best">BEST</span></h3>
+                            <p class="friend-role">cutodme</p>
+                            <p class="friend-desc" data-i18n="friend_venya_desc">Мой брат...</p>
+                            <div class="friend-links"><a href="https://t.me/cutodme" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+
+                    <!-- ВАДИМ -->
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/vadim.jpg" alt="VAI"><span class="badge-icon">⭐</span></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_vadim_name">Вадим <span class="friend-badge best">BEST</span></h3>
+                            <p class="friend-role">VAI</p>
+                            <p class="friend-desc" data-i18n="friend_vadim_desc">Классный одноклассник...</p>
+                            <div class="friend-links">
+                                <a href="https://t.me/VAI_Programmer" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                                <a href="https://github.com/Vadim-Khristenko" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- КРИСТОФЕР -->
+                    <div class="friend-card special">
+                        <div class="friend-avatar-wrap special-avatar">
+                            <img src="assets/friends/christopher.jpg" alt="Christopher">
+                            <span class="badge-icon heart">❤️</span>
+                            <div class="love-overlay" data-i18n="love_her">Люблю её</div>
+                        </div>
+                        <div class="friend-info">
+                            <h3>Christopher</h3>
+                            <p class="friend-role">ChristopherBangBang</p>
+                            <p class="friend-desc" data-i18n="friend_chris_desc">Талантливая художница...</p>
+                            <div class="friend-links"><a href="https://t.me/ChristopherBang_Bang" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+
+                    <!-- СЕРГЕЙ -->
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/sergey.jpg" alt="Sergey"><span class="badge-icon">⭐</span></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_sergey_name">Сергей <span class="friend-badge best">BEST</span></h3>
+                            <p class="friend-role">sergkkz</p>
+                            <p class="friend-desc" data-i18n="friend_sergey_desc">Друг детства...</p>
+                            <div class="friend-links"><a href="https://t.me/sergkkz" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+
+                    <!-- ВИТЯ -->
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/vity.jpg" alt="Vitya"><span class="badge-icon">⭐</span></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_vitya_name">Витя <span class="friend-badge best">BEST</span></h3>
+                            <p class="friend-role">pevpootkruvatel</p>
+                            <p class="friend-desc" data-i18n="friend_vitya_desc">Клевый чувак...</p>
+                            <div class="friend-links"><a href="https://t.me/pevpootkruvatel" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ЗНАКОМЫЕ -->
+                <h2 class="section-title" style="margin-top: 3rem;" data-i18n="acquaintances_title">Знакомые</h2>
+                <div class="friends-grid">
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/leon.jpg" alt="Leon"></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_leon_name">Леон</h3>
+                            <p class="friend-role">V0LTA</p>
+                            <p class="friend-desc" data-i18n="friend_leon_desc">Крутой чувак...</p>
+                            <div class="friend-links"><a href="https://t.me/V0LTA" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/maxim.jpg" alt="Maxim"></div>
+                        <div class="friend-info">
+                            <h3 data-i18n="friend_maxim_name">Максим</h3>
+                            <p class="friend-role">babochax</p>
+                            <p class="friend-desc" data-i18n="friend_maxim_desc">Одноклассник...</p>
+                            <div class="friend-links"><a href="https://t.me/babochax" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        </div>
+                    </div>
+                    <div class="friend-card">
+                        <div class="friend-avatar-wrap"><img src="assets/friends/svytaslav.jpg" alt="DevSvytaslav"></div>
+                        <div class="friend-info">
+                            <h3>DevSvytaslav</h3>
+                            <p class="friend-role">Svyatik25</p>
+                            <p class="friend-desc" data-i18n="friend_slava_desc">Классный молодой программист...</p>
+                            <div class="friend-links">
+                                <a href="https://t.me/Svyatik25" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                                <a href="https://github.com/DevSvyatoslav" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="contacts">
+            <h2 class="section-title" data-i18n="contacts_title">Контакты</h2>
+            <div class="card win98-window">
+                <div class="win98-titlebar">
+                    <span>Contacts.exe</span>
+                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                </div>
+                <div class="contacts-card" style="padding: 1rem;">
+                    <p data-i18n="contacts_desc">Всегда открыт к общению и новым проектам!</p>
+                    <div class="links" id="contact-links">
+                        <a href="https://github.com/EkeVoki" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+                        <a href="https://t.me/Eke0Voki" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
+                        <a href="https://steamcommunity.com/id/EkeVoki/" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>Steam</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer id="main-footer">
+        <div class="container">
+            <p data-i18n="footer_text">© 2026 EkeVoki. Сделано за кружкой кофе.</p>
+            
+            <div id="cat-zone">
+                <div class="laptop-standalone">
+                    <div class="screen-standalone">
+                        <p id="cat-text"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="birthday-cake" class="hidden" onclick="eatCake()">🎂</div>
+            <p id="cake-message" class="hidden" data-i18n="cake_lie">Торт — это ложь</p>
+        </div>
+    </footer>
+
+    <div id="terminal-mode" class="terminal-hidden">
+        <div class="terminal-window">
+            <div class="terminal-header"><span>guest@ekevoki:~$</span><span class="term-close" onclick="setTheme('dark')">X</span></div>
+            <div class="terminal-body" id="term-output"><p>Welcome to EkeVoki OS v1.0. Type 'help' for commands.</p></div>
+            <div class="terminal-input-line"><span class="prompt">guest@ekevoki:~$</span><input type="text" id="term-input" autocomplete="off" autofocus></div>
+        </div>
+    </div>
+
+    <!-- КНОПКА ПУСК ДЛЯ WIN98 -->
+    <div id="win98-taskbar" class="win98-hidden">
+        <button id="win98-start-btn" onclick="toggleWin98Menu()">
+            <img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1fa9f.png" alt="Start" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+            Пуск
+        </button>
+        <div id="win98-start-menu" class="win98-hidden">
+            <div class="win98-menu-item" onclick="setTheme('dark')">Сменить тему на стандартную</div>
+            <div class="win98-menu-item" onclick="setTheme('mac')">Сменить тему на Mac</div>
+            <div class="win98-menu-item" onclick="setTheme('miku')">Сменить тему на Miku</div>
+            <div class="win98-menu-item" onclick="setTheme('sakura')">Сменить тему на Sakura</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
