@@ -10,14 +10,13 @@ if (!location.hash) window.scrollTo(0, 0);
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-const LANGS = ['ru', 'en', 'zh'];
+const LANGS = ['ru', 'en', 'zh', 'kz'];
 const THEMES = ['dark', 'mac', 'miku', 'sakura', 'win98', 'terminal'];
 const THEME_ALIASES = { win95: 'win98', windows95: 'win98', windows98: 'win98', win: 'win98', start: 'dark', default: 'dark', term: 'terminal', cli: 'terminal' };
-const LANG_ALIASES = { rus: 'ru', russian: 'ru', eng: 'en', english: 'en', cn: 'zh', chinese: 'zh' };
+const LANG_ALIASES = { rus: 'ru', russian: 'ru', eng: 'en', english: 'en', cn: 'zh', chinese: 'zh', kaz: 'kz', kazakh: 'kz' };
 const THEME_COLORS = { dark: '#050a12', mac: '#f5f5f7', miku: '#0f0f0f', sakura: '#fff0f5', win98: '#008080', terminal: '#0a0e14' };
 
 const params = new URLSearchParams(location.search);
-// Флаг: отсутствует -> значение по умолчанию; ?x / ?x=1 / ?x=on -> true; ?x=0 / off / false / no -> false
 function flag(name, def = true) {
     if (!params.has(name)) return def;
     const v = (params.get(name) || '').trim().toLowerCase();
@@ -91,8 +90,8 @@ const translations = {
         win_shutdown_msg: "Теперь питание компьютера можно отключить.", win_shutdown_hint: "(нажмите, чтобы вернуться)",
         toast_close: "Шутка! Браузер не даёт мне тебя закрыть",
         tab_phrases: ["Ты меня не закрыл!", "Эй, я тут вообще-то!", "Вернись, я по тебе скучаю...", "Где ты?"],
-        term_help: ["Доступные команды:", "  help         - этот список", "  about        - инфо обо мне", "  skills       - навыки", "  friends      - список друзей", "  theme list   - список тем", "  theme <имя>  - сменить тему", "  lang <ru|en|zh> - сменить язык", "  date         - текущая дата", "  clear        - очистить", "  exit         - выйти из терминала"],
-        term_lang_set: "Язык изменён на русский.", term_theme_bad: "Ошибка: тема '{0}' не найдена.", term_cmd_bad: "Команда не найдена: {0}. Введите 'help'.", term_lang_bad: "Ошибка: язык '{0}' не найден (ru, en, zh)."
+        term_help: ["Доступные команды:", "  help         - этот список", "  about        - инфо обо мне", "  skills       - навыки", "  friends      - список друзей", "  theme list   - список тем", "  theme <имя>  - сменить тему", "  lang <ru|en|zh|kz> - сменить язык", "  date         - текущая дата", "  clear        - очистить", "  exit         - выйти из терминала"],
+        term_lang_set: "Язык изменён на русский.", term_theme_bad: "Ошибка: тема '{0}' не найдена.", term_cmd_bad: "Команда не найдена: {0}. Введите 'help'.", term_lang_bad: "Ошибка: язык '{0}' не найден (ru, en, zh, kz)."
     },
     en: {
         page_title: "EkeVoki | Python Developer",
@@ -133,8 +132,8 @@ const translations = {
         win_shutdown_msg: "It's now safe to turn off your computer.", win_shutdown_hint: "(click to go back)",
         toast_close: "Just kidding! The browser won't let me close you",
         tab_phrases: ["You didn't close me!", "Hey, I'm still here!", "Come back, I miss you...", "Where are you?"],
-        term_help: ["Available commands:", "  help         - this list", "  about        - about me", "  skills       - skills", "  friends      - friends list", "  theme list   - list of themes", "  theme <name> - change theme", "  lang <ru|en|zh> - change language", "  date         - current date", "  clear        - clear screen", "  exit         - leave the terminal"],
-        term_lang_set: "Language changed to English.", term_theme_bad: "Error: theme '{0}' not found.", term_cmd_bad: "Command not found: {0}. Type 'help'.", term_lang_bad: "Error: language '{0}' not found (ru, en, zh)."
+        term_help: ["Available commands:", "  help         - this list", "  about        - about me", "  skills       - skills", "  friends      - friends list", "  theme list   - list of themes", "  theme <name> - change theme", "  lang <ru|en|zh|kz> - change language", "  date         - current date", "  clear        - clear screen", "  exit         - leave the terminal"],
+        term_lang_set: "Language changed to English.", term_theme_bad: "Error: theme '{0}' not found.", term_cmd_bad: "Command not found: {0}. Type 'help'.", term_lang_bad: "Error: language '{0}' not found (ru, en, zh, kz)."
     },
     zh: {
         page_title: "EkeVoki | Python Developer",
@@ -175,8 +174,50 @@ const translations = {
         win_shutdown_msg: "现在可以安全地关闭计算机了。", win_shutdown_hint: "（点击返回）",
         toast_close: "开玩笑的！浏览器不让我关掉你",
         tab_phrases: ["你没把我关掉！", "喂，我还在这儿呢！", "回来吧，我想你了……", "你在哪？"],
-        term_help: ["可用命令：", "  help         - 命令列表", "  about        - 关于我", "  skills       - 技能", "  friends      - 朋友列表", "  theme list   - 主题列表", "  theme <名称> - 切换主题", "  lang <ru|en|zh> - 切换语言", "  date         - 当前日期", "  clear        - 清屏", "  exit         - 退出终端"],
-        term_lang_set: "语言已更改为中文。", term_theme_bad: "错误：未找到主题“{0}”。", term_cmd_bad: "未找到命令：{0}。请输入 'help'。", term_lang_bad: "错误：未找到语言“{0}”（ru、en、zh）。"
+        term_help: ["可用命令：", "  help         - 命令列表", "  about        - 关于我", "  skills       - 技能", "  friends      - 朋友列表", "  theme list   - 主题列表", "  theme <名称> - 切换主题", "  lang <ru|en|zh|kz> - 切换语言", "  date         - 当前日期", "  clear        - 清屏", "  exit         - 退出终端"],
+        term_lang_set: "语言已更改为中文。", term_theme_bad: "错误：未找到主题“{0}”。", term_cmd_bad: "未找到命令：{0}。请输入 'help'。", term_lang_bad: "错误：未找到语言“{0}”（ru、en、zh、kz）。"
+    },
+    kz: {
+        page_title: "EkeVoki | Python әзірлеушісі",
+        meta_desc: "EkeVoki — Python әзірлеушісі және оқушысы. Портфолио, жобалар және достар.",
+        skip_link: "Мазмұнға өту",
+        t_close: "Жабу", t_reload: "Қайта жүктеу", t_fullscreen: "Толық экран", t_lang: "Тіл", t_theme: "Тақырыпты өзгерту", t_menu: "Мәзір",
+        nav_info: "Ақпарат", nav_skills: "Дағдылар", nav_projects: "Жобалар", nav_friends: "Достар", nav_contacts: "Байланыс",
+        theme_title: "Шындықты таңдаңыз",
+        hero_subtitle: "Python әзірлеушісі және оқушысы",
+        hero_desc: "Код — менің шығармашылық алаңым. Python-да, кейде C++ және JS-те жазамын. Тағылымдама мен қызықты жобаларды іздеймін.",
+        hero_bdate: "Туған күні:", hero_age: "Қазір маған:",
+        info_title: "Ақпарат", info_approach_title: "Менің тәсілім",
+        info_approach_text: "Сәлем! Мен Python-ды жаңа бастаған әзірлеушімін. Мен үшін код тек таңбалар жиынтығы емес, шығармашылық құралы. Мен тек есептерді шешіп қана қоймай, идеяларымды жобалар арқылы білдірудің жолдарын іздеймін. Мен жасаған нәрсенің тек маған ғана емес, басқаларға да ыңғайлы әрі түсінікті болуы маңызды. Мен тапсырмаларға құралдарды таңдауды жөн көремін, керісінше емес, және теориядан гөрі тәжірибені жоғары бағалаймын. Менің басты назарым — нақты жобалар арқылы жаңа технологияларды үйрену.",
+        info_hobbies_title: "Хобби",
+        info_hobbies_intro: "Кодтан тыс уақытта манга оқимын, аниме көремін, үстел ойындарын және кооперативті және жеке ойындарды ойнаймын.",
+        info_manga: "Сүйікті манга:", info_manga_list: "«Шпион отбасы», «Бұл фарфор қуыршақ ғашық болды», «Фармацевт монологы»",
+        info_games: "Сүйікті ойындар:", info_games_list: "Fortnite, HoYoverse ойындары, көптеген Steam ойындары",
+        info_board: "Үстел ойындары:", info_board_list: "Каркассон, Монополия, UNO",
+        info_anime: "Сүйікті аниме:", info_anime_list: "Lucky Star, SPY×FAMILY, The Apothecary Diaries, My Dress-Up Darling",
+        info_spheres_title: "Қызығушылық салалары", info_spheres_text: "ML, Python коды, сайт жасау, ойын жасау.",
+        skills_title: "Дағдылар", skills_langs: "Бағдарламалау тілдері", skills_libs: "Кітапханалар мен фреймворктер", skills_tools: "Құралдар",
+        projects_title: "Жобалар", project_japname_desc: "Қарапайым, бірақ жанды жапон есімдерінің генераторы...", project_open: "GitHub-та ашу",
+        end_spine: "Соңы", end_title: "О, соңына жеттіңіз бе?",
+        end_p1: "Иә, мұнда жоба жоқ. Әзірге. Бірақ болады. Бұл не болады? Пайдалы нәрсе болуы мүмкін, немесе бір сағатта жасалған әзіл — кім біледі.",
+        end_p2: "Бастысы - сіз осындасыз. Жарайды, сайтты әрі қарай айналдырыңыз)",
+        friends_title: "Достар", acquaintances_title: "Таныстар",
+        friend_venya_name: "Вениамин <span class='friend-badge best'>BEST</span>", friend_venya_desc: "Менің ағам. Кез келген нәрсені кез келген уақытта талқылауға дайын жігіт)",
+        friend_vadim_name: "Вадим <span class='friend-badge best'>BEST</span>", friend_vadim_desc: "Керемет сыныптас, мені IT әлеміне әкелді, жобаларға керемет идеялар береді.",
+        love_her: "Оны жақсы көремін", friend_chris_desc: "Талантты суретші және керемет дос. Ол мені шабыттандырады...",
+        friend_sergey_name: "Сергей <span class='friend-badge best'>BEST</span>", friend_sergey_desc: "Балалық досым, бірге Майнкрафт серверлерін және кейін YouTube-ты бағындырдық)",
+        friend_vitya_name: "Витя <span class='friend-badge best'>BEST</span>", friend_vitya_desc: "Күшті жігіт, бірге ойнаймыз. Бір жобада таныстық....",
+        friend_leon_name: "Леон", friend_leon_desc: "Орталық университеттің күшті жігіті, ең күтпеген жерде кездестік: ол D&D ойынын өткізді",
+        friend_maxim_name: "Максим", friend_maxim_desc: "Сыныптас, геймдизайнер, Испаниядан, керемет)",
+        friend_slava_desc: "Керемет жас бағдарламашы, Сбер-де кездестік.",
+        contacts_title: "Байланыс", contacts_desc: "Қарым-қатынасқа және жаңа жобаларға әрқашан ашықпын!",
+        footer_text: "© 2026 EkeVoki. Бір кесе кофе үстінде жасалды.", cake_lie: "Торт — бұл өтірік",
+        win_start: "Бастау", win_themes: "Тақырыптар", win_lang: "Тіл", win_shutdown: "Жұмысты аяқтау...",
+        win_shutdown_msg: "Енді компьютерді өшіруге болады.", win_shutdown_hint: "(қайту үшін басыңыз)",
+        toast_close: "Әзіл! Браузер мені жабуға рұқсат бермейді",
+        tab_phrases: ["Сен мені жабпадың!", "Эй, мен осындамын!", "Қайт, мен сені сағындым...", "Сен қайдасың?"],
+        term_help: ["Қолжетімді командалар:", "  help         - осы тізім", "  about        - мен туралы", "  skills       - дағдылар", "  friends      - достар тізімі", "  theme list   - тақырыптар тізімі", "  theme <атауы> - тақырыпты өзгерту", "  lang <ru|en|zh|kz> - тілді өзгерту", "  date         - ағымдағы күн", "  clear        - экранды тазалау", "  exit         - терминалдан шығу"],
+        term_lang_set: "Тіл қазақ тіліне өзгертілді.", term_theme_bad: "Қате: '{0}' тақырыбы табылмады.", term_cmd_bad: "Команда табылмады: {0}. 'help' енгізіңіз.", term_lang_bad: "Қате: '{0}' тілі табылмады (ru, en, zh, kz)."
     }
 };
 
@@ -211,6 +252,7 @@ function calcAge() {
 function yearsWord(lang, n) {
     if (lang === 'en') return n === 1 ? 'year old' : 'years old';
     if (lang === 'zh') return '岁';
+    if (lang === 'kz') return 'жас';
     const m10 = n % 10, m100 = n % 100;
     if (m10 === 1 && m100 !== 11) return 'год';
     if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'года';
@@ -282,7 +324,7 @@ function setLang(code, opts = {}) {
     $$('[data-i18n-title]').forEach((el) => { const v = dict[el.dataset.i18nTitle]; if (typeof v === 'string') { el.title = v; el.setAttribute('aria-label', v); } });
 
     const label = $('#lang-label');
-    if (label) label.textContent = { ru: 'RU', en: 'EN', zh: '中文' }[lang];
+    if (label) label.textContent = { ru: 'RU', en: 'EN', zh: '中文', kz: 'KZ' }[lang];
     $$('[data-lang]').forEach((b) => b.setAttribute('aria-current', String(b.dataset.lang === lang)));
     document.title = dict.page_title;
     const meta = $('#meta-desc');
@@ -328,7 +370,6 @@ function stopPetals() {
 function setTheme(name, opts = {}) {
     const { persist = true, syncUrl = true, origin = null, initial = false } = opts;
     const theme = normTheme(name) || 'dark';
-    // точка, из которой «расходится» круговой переход
     const rect = origin && origin.getBoundingClientRect ? origin.getBoundingClientRect() : null;
     const x = rect ? rect.left + rect.width / 2 : window.innerWidth - 40;
     const y = rect ? rect.top + rect.height / 2 : 40;
@@ -473,7 +514,6 @@ document.addEventListener('click', (e) => {
         return;
     }
 
-    // кассеты: на сенсорных экранах карточка открывается по нажатию
     const cassette = target.closest('.cassette');
     if (cassette && !cassette.classList.contains('disabled') && !target.closest('.cassette-card a')) {
         const willOpen = !cassette.classList.contains('open');
@@ -482,12 +522,11 @@ document.addEventListener('click', (e) => {
     } else if (!cassette) {
         $$('.cassette.open').forEach((c) => c.classList.remove('open'));
     }
-    // «Люблю её» — по нажатию на сенсорных экранах
+    
     const loveAvatar = target.closest('.special-avatar');
     $$('.special-avatar.show').forEach((a) => { if (a !== loveAvatar) a.classList.remove('show'); });
     if (loveAvatar) loveAvatar.classList.toggle('show');
 
-    // закрытие выпадающих меню по клику снаружи
     if (target.closest('.nav-links a')) setNavMenu(false);
     if (!target.closest('.lang-selector')) setLangMenu(false);
     if (!target.closest('#theme-selector') && !target.closest('#theme-btn')) setThemeMenu(false);
@@ -540,7 +579,6 @@ function initSnake() {
     const cancelHold = () => clearTimeout(holdTimeout);
     trigger.addEventListener('mouseenter', () => { if (Date.now() - lastTouch > 800) startHold(5000); });
     trigger.addEventListener('mouseleave', cancelHold);
-    // на телефонах — долгое нажатие
     trigger.addEventListener('touchstart', () => { lastTouch = Date.now(); startHold(3000); }, { passive: true });
     ['touchend', 'touchcancel'].forEach((ev) => trigger.addEventListener(ev, () => { lastTouch = Date.now(); cancelHold(); }));
 
@@ -627,7 +665,7 @@ const catCategories = {
     philosophy: ["Если дерево падает в лесу, а никто не слышит... оно падает?", "Смысл жизни в том, чтобы найти сосиску.", "Мы все просто код в чьей-то матрице.", "Ты не ты, когда голоден.", "Почему мы здесь? Просто чтобы страдать?", "Время — иллюзия, а обед — нет.", "Я мыслю, следовательно, я мяукаю.", "Вселенная бесконечна, как и моя наглость.", "Не важно, куда ты идешь, важно, где твоя миска.", "Счастье — это когда тебя гладят.", "Мы живем в симуляции, и создатель этого сайта — студент.", "Жизнь коротка, а обед длится вечность.", "Что первично: дух или материя? Материя (еда).", "В конце времен останется только пыль и мой мурмур.", "Я видел вечность и она была полна пустых мисок."],
     cute: ["Я котик:3", "Мяу-мяу! (＾▽＾)", "Сделай мне погладить!", "Я самый милый кот в этом интернете.", "Мурмурмур... (￣▽￣)", "А ты знаешь, что я люблю тебя?", "Дай сосиску, и я дам тебе лапку.", "Я пушистый и опасный.", "Ты меня покормил? Я тебя люблю.", "Я сплю 20 часов в сутки, а ты?", "Мой хвост — моя жизнь.", "Я бегу к тебе со всех лап!", "У меня самые лучшие уши на свете.", "Ты меня гладишь, я мурчу.", "Спасибо, что ты есть. (｡•́︿•̀｡)"],
     it_memes: ["Это не баг, это фича.", "Работает? Не трогай!", "У меня все работает на моей машине.", "Ты забыл поставить точку с запятой, да?", "Код, который я писал в 3 часа ночи, работает, но я не знаю как.", "Стек: Python, Django, и надежда.", "Ты когда-нибудь видел, как горит сервер? Я нет, но слышал.", "Перезагрузка решает все проблемы.", "Git push --force и будь что будет.", "Я не пишу код, я пишу спагетти.", "Тестирование — для слабаков.", "Ты думал, что я умный? Я просто гуглю.", "Мой код — это искусство, а ты не понимаешь.", "Я не знаю, как это работает, но это работает.", "У меня 99 багов, но я их не фикшу."],
-    breaking_4th: ["Ты зачем сюда скроллишь?", "Я знаю, что ты читаешь это. Я вижу тебя.", "Хватит пялиться на мой экран!", "Ты думаешь, я не настоящий кот?", "А ты знал, что создатель этого сайта... это я? Нет, шучу.", "Ты читаешь это, а я наблюдаю за тобой.", "Привет, ты! Да, именно ты.", "Ты думаешь, это игра? Это симуляция.", "Ты нажал на кнопку? Я видел.", "Улыбнись, тебя снимает камера.", "Я знаю, что ты не спал всю ночь.", "Ты когда-нибудь выходил из этой комнаты?", "Я кот, который знает, где ты живешь.", "Не закрывай вкладку, мне скучно.", "Ты думал, что я не замечу, как ты меня читаешь?"],
+    breaking_4th: ["Ты зачем сюда скроллишь? 👀", "Я знаю, что ты читаешь это. Я вижу тебя.", "Хватит пялиться на мой экран!", "Ты думаешь, я не настоящий кот?", "А ты знал, что создатель этого сайта... это я? Нет, шучу.", "Ты читаешь это, а я наблюдаю за тобой.", "Привет, ты! Да, именно ты.", "Ты думаешь, это игра? Это симуляция.", "Ты нажал на кнопку? Я видел.", "Улыбнись, тебя снимает камера.", "Я знаю, что ты не спал всю ночь.", "Ты когда-нибудь выходил из этой комнаты?", "Я кот, который знает, где ты живешь.", "Не закрывай вкладку, мне скучно.", "Ты думал, что я не замечу, как ты меня читаешь?"],
     miku: ["А ты знал, что трек Мику 'World is Mine' считается классикой?", "Мику — это вокалоид, созданный Yamaha в 2007.", "Мику говорит только 'Мику-Мику' в оригинале.", "Она самая известная виртуальная певица в мире.", "Мику дала концерты в реальном мире с голограммой.", "Ее день рождения — 31 августа.", "Мику — топ!", "Ты слушал 'Ievan Polkka' в ее исполнении?", "Мику — не просто картинка, это голос.", "Она — символ всей вокалоидной культуры.", "Знаешь, сколько фанатов у Мику? Миллионы.", "Мику вдохновила на создание тысяч песен.", "Она — икона стиля и будущего.", "Мику — это моя жизнь.", "Я не фанат, я — преданный последователь Мику."],
     site_creation: ["Ты думал создавать сайт легко? Меня писали, чтобы я нормально работал, кучу часов!", "Знаешь, сколько багов было исправлено? Ты даже не представляешь.", "Этот сайт — результат кучи ночей и кофе.", "Я создан, чтобы ты улыбался.", "Сайт собирался из трех файлов, а работает на четырех.", "Мой разработчик не спал неделю, чтобы ты это увидел.", "Тут было столько ошибок, что я устал их считать.", "Это не просто сайт, это история.", "Я — результат чистой воли и отладки.", "Сайт писался под ночные треки Мику.", "Ты не поверишь, но я почти сломался.", "Сайт — это труд, а не просто код.", "Мой создатель попросил меня быть милым.", "Я — кот, созданный человеком.", "Ты держишь в руках (на экране) мою душу."],
     random: ["ыыыы", "явапвпкопл", "фываолддж", "афывафыва", "покопокоп", "рукавп", "мыфмфмм", "вапвапвап", "йцукенг", "фывапрол", "ячсмить", "олдфыва", "пукпукпук", "мыыыыш", "фыва"]
@@ -666,7 +704,7 @@ function typeNextPhrase() {
             catText.textContent += chars[i++];
         } else {
             clearInterval(catTyper); catTyper = null;
-            if (Math.random() < 0.3) catCategory = null; // с шансом 30% меняем тему
+            if (Math.random() < 0.3) catCategory = null;
             scheduleNextPhrase();
         }
     }, 100);
@@ -705,17 +743,91 @@ function runCommand(raw) {
     const parts = cmd.toLowerCase().split(/\s+/);
     const head = parts[0];
     const arg = parts.slice(1).join(' ');
+
+    // Обработка .#console
+    const consoleMatch = head.match(/^\.\#(\d+)console$/);
+    if (consoleMatch) {
+        const count = parseInt(consoleMatch[1]);
+        for (let i = 0; i < count; i++) {
+            const cats = Object.keys(catCategories);
+            const cat = cats[Math.floor(Math.random() * cats.length)];
+            const phrase = catCategories[cat][Math.floor(Math.random() * catCategories[cat].length)];
+            printToTerminal(phrase);
+        }
+        return;
+    }
+
+    // Обработка .#terminal
+    const termMatch = head.match(/^\.\#(\d)terminal$/);
+    if (termMatch) {
+        const num = termMatch[1];
+        const themes = {'1': 'dark', '2': 'mac', '3': 'miku', '4': 'sakura', '5': 'win98'};
+        if (themes[num]) {
+            setTheme(themes[num]);
+            printToTerminal(`Тема изменена на ${themes[num]}`);
+        } else {
+            printToTerminal("Неверный номер темы (1-5).");
+        }
+        return;
+    }
+
+    // Обработка .lang_
+    if (head.startsWith('.lang_')) {
+        const lang = head.split('_')[1];
+        if (['ru', 'eng', 'zh', 'kaz'].includes(lang)) {
+            const langMap = {'ru': 'ru', 'eng': 'en', 'zh': 'zh', 'kaz': 'kz'};
+            setLang(langMap[lang]);
+            printToTerminal(`Язык изменен на ${lang}`);
+        } else {
+            printToTerminal("Неизвестный язык.");
+        }
+        return;
+    }
+
+    // Обработка .theme_random
+    if (head === '.theme_random') {
+        const themes = ['dark', 'mac', 'miku', 'sakura', 'win98'];
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+        setTheme(randomTheme);
+        printToTerminal(`Случайная тема: ${randomTheme}`);
+        return;
+    }
+
+    // Обработка .console
+    if (head === '.console') {
+        const cats = Object.keys(catCategories);
+        const cat = cats[Math.floor(Math.random() * cats.length)];
+        const phrase = catCategories[cat][Math.floor(Math.random() * catCategories[cat].length)];
+        printToTerminal(phrase);
+        return;
+    }
+
+    // Обработка .project
+    if (head === '.project') {
+        printToTerminal("JapNameGenerator - генератор японских имен. Ссылка: https://github.com/EkeVoki/JapNameGenerator");
+        return;
+    }
+
+    // Обработка .event#christmas
+    if (head === '.event#christmas') {
+        const now = new Date();
+        if (now.getMonth() === 11) {
+            printToTerminal("Декабрь? Включаю новогоднюю песню! (Скоро будет)");
+        } else {
+            printToTerminal(":0");
+        }
+        return;
+    }
+
     switch (head) {
         case 'help': t('term_help').forEach((line, i) => printToTerminal(line, i === 0 ? 'term-info' : '')); break;
         case 'about': printToTerminal('EkeVoki - Python Developer.'); break;
         case 'skills': printToTerminal("Python, C++, JS, NumPy, Pandas, Git, Ren'Py."); break;
         case 'friends': printToTerminal('Вадим, Christopher, Сергей, Витя, Леон, Максим, DevSvytaslav.'); break;
-        case 'date': printToTerminal(new Date().toLocaleString({ ru: 'ru-RU', en: 'en-GB', zh: 'zh-CN' }[currentLang])); break;
+        case 'date': printToTerminal(new Date().toLocaleString({ ru: 'ru-RU', en: 'en-GB', zh: 'zh-CN', kz: 'kk-KZ' }[currentLang])); break;
         case 'clear': termOutput.innerHTML = ''; break;
         case 'exit': setTheme(lastVisualTheme); break;
-        case '.lang01': setLang('ru'); printToTerminal(t('term_lang_set')); break;
-        case '.lang02': setLang('en'); printToTerminal(t('term_lang_set')); break;
-        case '.lang03': setLang('zh'); printToTerminal(t('term_lang_set')); break;
+        case '.exit': setTheme(lastVisualTheme); break;
         case 'lang': {
             const l = normLang(arg);
             if (l) { setLang(l); printToTerminal(t('term_lang_set')); }
@@ -767,10 +879,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tray) tray.classList.add('hidden');
     }
 
-    // Приоритет языка: ?lang= > сохранённый выбор > язык браузера > русский
     const navLang = normLang((navigator.languages && navigator.languages[0]) || navigator.language);
     setLang(normLang(params.get('lang')) || normLang(store.get('site-lang')) || navLang || 'ru', { persist: false, syncUrl: false });
-    // Приоритет темы: ?theme= > сохранённая > стартовая
     setTheme(normTheme(params.get('theme')) || normTheme(store.get('site-theme')) || 'dark', { persist: false, syncUrl: false, initial: true });
 
     if (FLAGS.snake) initSnake();
