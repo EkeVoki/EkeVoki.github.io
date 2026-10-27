@@ -2,27 +2,60 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title data-i18n="page_title">EkeVoki | Python Developer</title>
+    <meta name="description" id="meta-desc" content="EkeVoki — Python-разработчик и ученик. Портфолио, проекты и друзья.">
+    <meta name="theme-color" id="meta-theme" content="#050a12">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="theme-dark">
 
-    <div id="event-overlay"></div>
-    <div id="sakura-petals"></div>
-    <div id="halloween-pumpkins"></div>
+    <!-- SVG-спрайт: все иконки сайта (вместо эмодзи) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.2 3 3.2 15 0 18M12 3c-3.2 3-3.2 15 0 18"/></symbol>
+            <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.8-.5-1.2-.3-.4-.5-.7-.5-1.2 0-.9.8-1.7 1.8-1.7H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></symbol>
+            <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+            <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></symbol>
+            <symbol id="i-flower" viewBox="0 0 24 24"><g><ellipse cx="12" cy="6.2" rx="2.8" ry="3.8"/><ellipse cx="12" cy="6.2" rx="2.8" ry="3.8" transform="rotate(72 12 12)"/><ellipse cx="12" cy="6.2" rx="2.8" ry="3.8" transform="rotate(144 12 12)"/><ellipse cx="12" cy="6.2" rx="2.8" ry="3.8" transform="rotate(216 12 12)"/><ellipse cx="12" cy="6.2" rx="2.8" ry="3.8" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="1.4"/></g></symbol>
+            <symbol id="i-floppy" viewBox="0 0 24 24"><path d="M5 3h11l4 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M8 3v5h7V3M7 21v-7h10v7"/></symbol>
+            <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 10l3 2-3 2M12 15h5"/></symbol>
+            <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+            <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 21h16M5 21v-8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8M5 16c2 1.5 3.5 1.5 5 0s3-1.5 5 0 3.5 1.5 4 0M12 11V8"/><path d="M12 6.4c1-1 0-2.4 0-2.4s-1 1.4 0 2.4z"/></symbol>
+            <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+            <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></symbol>
+            <symbol id="i-pc" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="12" rx="1"/><path d="M8 21h8M12 15v6M6 18h12"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></symbol>
+            <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+            <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 20.5s-8-4.9-8-11A4.5 4.5 0 0 1 12 6.8a4.5 4.5 0 0 1 8 2.7c0 6.1-8 11-8 11z"/></symbol>
+            <symbol id="i-win" viewBox="0 0 16 16"><path fill="#f0452b" d="M1 3c2-.9 4-.9 6 0v4.5c-2-.9-4-.9-6 0z"/><path fill="#6fbf3b" d="M8 3c2 .9 4 .9 6 0v4.5c-2 .9-4 .9-6 0z"/><path fill="#2f8de4" d="M1 8.5c2-.9 4-.9 6 0V13c-2-.9-4-.9-6 0z"/><path fill="#fdc830" d="M8 8.5c2 .9 4 .9 6 0V13c-2 .9-4 .9-6 0z"/></symbol>
+            <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+            <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></symbol>
+            <symbol id="i-steam" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol>
+        </defs>
+    </svg>
 
-    <nav class="navbar">
+    <a class="skip-link" href="#main" data-i18n="skip_link">К содержимому</a>
+
+    <div id="sakura-petals" aria-hidden="true"></div>
+    <div id="event-overlay" aria-hidden="true"></div>
+    <div id="halloween-pumpkins" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Main">
         <div class="mac-controls">
-            <span class="mac-btn red" onclick="closeSite()" title="Закрыть"></span>
-            <span class="mac-btn yellow" onclick="location.reload()" title="Перезагрузить"></span>
-            <span class="mac-btn green" onclick="toggleFullscreen()" title="Полный экран"></span>
+            <button type="button" class="mac-btn red" data-action="close" data-i18n-title="t_close" title="Закрыть" aria-label="Закрыть"></button>
+            <button type="button" class="mac-btn yellow" data-action="reload" data-i18n-title="t_reload" title="Перезагрузить" aria-label="Перезагрузить"></button>
+            <button type="button" class="mac-btn green" data-action="fullscreen" data-i18n-title="t_fullscreen" title="Полный экран" aria-label="Полный экран"></button>
         </div>
-        <a href="#" class="nav-logo"><span class="accent">Eke</span>Voki</a>
-        
-        <div class="nav-links">
+        <a href="#about" class="nav-logo"><span class="accent">Eke</span>Voki</a>
+
+        <div class="nav-links" id="nav-links">
             <a href="#about-text" data-i18n="nav_info">Info</a>
             <a href="#skills" data-i18n="nav_skills">Скиллы</a>
             <a href="#projects" data-i18n="nav_projects">Проекты</a>
@@ -31,137 +64,150 @@
         </div>
 
         <div class="nav-controls">
-            <div class="nav-clock">
+            <div class="nav-clock" id="nav-clock">
                 <span id="clock-time">00:00:00</span>
                 <span id="clock-date">01.01.2026</span>
             </div>
             <div class="lang-selector">
-                <button class="lang-btn" onclick="toggleLangMenu()">🌐 RU</button>
-                <div id="lang-dropdown" class="lang-dropdown hidden">
-                    <button onclick="setLang('ru')">🇷🇺 Русский</button>
-                    <button onclick="setLang('en')">🇬🇧 English</button>
-                    <button onclick="setLang('zh')">🇨🇳 中文</button>
+                <button type="button" class="lang-btn" id="lang-btn" data-action="toggle-lang" aria-haspopup="true" aria-expanded="false" data-i18n-title="t_lang" title="Язык" aria-label="Язык">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span id="lang-label">RU</span>
+                </button>
+                <div id="lang-dropdown" class="lang-dropdown hidden" role="menu">
+                    <button type="button" role="menuitem" data-lang="ru"><span class="lang-code">RU</span>Русский</button>
+                    <button type="button" role="menuitem" data-lang="en"><span class="lang-code">EN</span>English</button>
+                    <button type="button" role="menuitem" data-lang="zh"><span class="lang-code">中</span>中文</button>
                 </div>
             </div>
-            <button class="settings-btn" onclick="toggleThemeMenu()" title="Сменить тему">🎨</button>
+            <button type="button" class="settings-btn" id="theme-btn" data-action="toggle-theme-menu" aria-haspopup="true" aria-expanded="false" data-i18n-title="t_theme" title="Сменить тему" aria-label="Сменить тему">
+                <svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg>
+            </button>
+            <button type="button" class="burger" id="burger" data-action="toggle-nav" aria-expanded="false" aria-controls="nav-links" data-i18n-title="t_menu" title="Меню" aria-label="Меню">
+                <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+            </button>
         </div>
     </nav>
 
-    <div id="theme-selector" class="theme-dropdown hidden">
-        <h2 data-i18n="theme_title">Выбери реальность</h2>
+    <div id="theme-selector" class="theme-dropdown hidden" role="dialog" aria-labelledby="theme-title">
+        <h2 id="theme-title" data-i18n="theme_title">Выбери реальность</h2>
         <div class="theme-grid">
-            <button class="theme-btn" onclick="setTheme('dark')"><span class="theme-icon">🌌</span><span class="theme-name">Start Theme</span></button>
-            <button class="theme-btn" onclick="setTheme('mac')"><span class="theme-icon">🍎</span><span class="theme-name">Mac</span></button>
-            <button class="theme-btn" onclick="setTheme('miku')"><span class="theme-icon">🎤</span><span class="theme-name">Miku</span></button>
-            <button class="theme-btn" onclick="setTheme('sakura')"><span class="theme-icon">🌸</span><span class="theme-name">Sakura</span></button>
-            <button class="theme-btn" onclick="setTheme('win98')"><span class="theme-icon">💾</span><span class="theme-name">Windows 98</span></button>
+            <button type="button" class="theme-btn" data-theme="dark"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-moon"/></svg><span class="theme-name">Start Theme</span></button>
+            <button type="button" class="theme-btn" data-theme="mac"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-monitor"/></svg><span class="theme-name">Mac</span></button>
+            <button type="button" class="theme-btn" data-theme="miku"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-mic"/></svg><span class="theme-name">Miku</span></button>
+            <button type="button" class="theme-btn" data-theme="sakura"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-flower"/></svg><span class="theme-name">Sakura</span></button>
+            <button type="button" class="theme-btn" data-theme="win98"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-floppy"/></svg><span class="theme-name">Windows 98</span></button>
+            <button type="button" class="theme-btn" data-theme="terminal"><svg class="icon theme-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span class="theme-name">Terminal</span></button>
         </div>
     </div>
 
-    <div class="container">
+    <main class="container" id="main">
         <header class="hero" id="about">
-            <img src="assets/avatar.png" alt="Avatar" class="avatar">
+            <img src="assets/avatar.png" alt="Avatar" class="avatar" width="150" height="150" fetchpriority="high" decoding="async">
             <div class="hero-text">
                 <h1>EkeVoki</h1>
-                <h2 data-i18n="hero_subtitle">Python Developer & Learner</h2>
+                <h2 data-i18n="hero_subtitle">Python Developer &amp; Learner</h2>
                 <p data-i18n="hero_desc">Код — это моя творческая площадка. Пишу на Python, иногда на C++ и JS. Ищу стажировку и интересные проекты.</p>
                 <div class="birth-info">
                     <p><span class="accent" data-i18n="hero_bdate">Дата рождения:</span> 23.10.2009</p>
-                    <p><span class="accent" data-i18n="hero_age">Сейчас мне:</span> <span id="dynamic-age">...</span> <span data-i18n="hero_years">лет</span></p>
+                    <p><span class="accent" data-i18n="hero_age">Сейчас мне:</span> <span id="dynamic-age">...</span> <span id="age-word" data-i18n="hero_years">лет</span></p>
                 </div>
             </div>
         </header>
 
         <section class="content-section" id="about-text">
             <h2 class="section-title" data-i18n="info_title">Info</h2>
-            <div class="win98-window main-info-window">
+            <div class="win98-window main-info-window" data-win="info">
                 <div class="win98-titlebar">
-                    <span>Info.exe</span>
-                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                    <span class="win-title"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>Info.exe</span>
+                    <div class="win98-controls"><button type="button" data-win-act="min" aria-label="Minimize">_</button><button type="button" data-win-act="max" aria-label="Maximize">□</button><button type="button" data-win-act="close" aria-label="Close">×</button></div>
                 </div>
-                <div class="info-subsection win98-subwindow">
-                    <h3 class="info-subtitle" data-i18n="info_approach_title">Мой подход</h3>
-                    <p data-i18n="info_approach_text">Привет! Я начинающий разработчик на Python...</p>
-                </div>
-                <div class="info-subsection win98-subwindow">
-                    <h3 class="info-subtitle" data-i18n="info_hobbies_title">Увлечения</h3>
-                    <p data-i18n="info_hobbies_intro">Читаю манги, смотрю аниме...</p>
-                    <ul class="hobbies-list">
-                        <li><strong data-i18n="info_manga">Любимые манги:</strong> <span data-i18n="info_manga_list">...</span></li>
-                        <li><strong data-i18n="info_games">Любимые игры:</strong> <span data-i18n="info_games_list">...</span></li>
-                        <li><strong data-i18n="info_board">Настольные игры:</strong> <span data-i18n="info_board_list">...</span></li>
-                        <li><strong data-i18n="info_anime">Любимые аниме:</strong> <span data-i18n="info_anime_list">...</span></li>
-                    </ul>
-                </div>
-                <div class="info-subsection win98-subwindow">
-                    <h3 class="info-subtitle" data-i18n="info_spheres_title">Сферы интересов</h3>
-                    <p data-i18n="info_spheres_text">ML, Python код, написание сайтов, создание игр.</p>
+                <div class="win-body">
+                    <div class="info-subsection win98-subwindow">
+                        <h3 class="info-subtitle" data-i18n="info_approach_title">Мой подход</h3>
+                        <p data-i18n="info_approach_text">Привет! Я начинающий разработчик на Python...</p>
+                    </div>
+                    <div class="info-subsection win98-subwindow">
+                        <h3 class="info-subtitle" data-i18n="info_hobbies_title">Увлечения</h3>
+                        <p data-i18n="info_hobbies_intro">Читаю манги, смотрю аниме...</p>
+                        <ul class="hobbies-list">
+                            <li><strong data-i18n="info_manga">Любимые манги:</strong> <span data-i18n="info_manga_list">...</span></li>
+                            <li><strong data-i18n="info_games">Любимые игры:</strong> <span data-i18n="info_games_list">...</span></li>
+                            <li><strong data-i18n="info_board">Настольные игры:</strong> <span data-i18n="info_board_list">...</span></li>
+                            <li><strong data-i18n="info_anime">Любимые аниме:</strong> <span data-i18n="info_anime_list">...</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-subsection win98-subwindow">
+                        <h3 class="info-subtitle" data-i18n="info_spheres_title">Сферы интересов</h3>
+                        <p data-i18n="info_spheres_text">ML, Python код, написание сайтов, создание игр.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="content-section" id="skills">
             <h2 class="section-title" data-i18n="skills_title">Скиллы</h2>
-            <div class="card win98-window">
+            <div class="card win98-window" data-win="skills">
                 <div class="win98-titlebar">
-                    <span>Skills.exe</span>
-                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                    <span class="win-title"><svg class="icon" aria-hidden="true"><use href="#i-pc"/></svg>Skills.exe</span>
+                    <div class="win98-controls"><button type="button" data-win-act="min" aria-label="Minimize">_</button><button type="button" data-win-act="max" aria-label="Maximize">□</button><button type="button" data-win-act="close" aria-label="Close">×</button></div>
                 </div>
-                
-                <h3 class="skill-category" data-i18n="skills_langs">Языки программирования</h3>
-                <div class="skills-grid">
-                    <div class="skill-card snake-card">
-                        <div class="card-face" id="python-trigger"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
-                        <div class="snake-lid"><div class="snake-game-area" id="python-game"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Snake" id="snake-head"></div></div>
+                <div class="win-body">
+                    <h3 class="skill-category" data-i18n="skills_langs">Языки программирования</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card snake-card">
+                            <div class="card-face" id="python-trigger"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="40" height="40" loading="lazy" decoding="async"><span>Python</span></div>
+                            <div class="snake-lid"><div class="snake-game-area" id="python-game"></div></div>
+                        </div>
+                        <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" width="40" height="40" loading="lazy" decoding="async"><span>C++</span></div>
+                        <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" width="40" height="40" loading="lazy" decoding="async"><span>JavaScript</span></div>
                     </div>
-                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><span>C++</span></div>
-                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span>JavaScript</span></div>
-                </div>
 
-                <h3 class="skill-category" data-i18n="skills_libs">Библиотеки и Фреймворки</h3>
-                <div class="skills-grid">
-                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"><span>NumPy</span></div>
-                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"><span>Pandas</span></div>
-                </div>
+                    <h3 class="skill-category" data-i18n="skills_libs">Библиотеки и Фреймворки</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" width="40" height="40" loading="lazy" decoding="async"><span>NumPy</span></div>
+                        <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" width="40" height="40" loading="lazy" decoding="async"><span>Pandas</span></div>
+                    </div>
 
-                <h3 class="skill-category" data-i18n="skills_tools">Инструменты</h3>
-                <div class="skills-grid">
-                    <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><span>Git</span></div>
-                    <div class="skill-card"><img src="assets/renpy.png" alt="Ren'Py" style="object-fit: contain;"><span>Ren'Py</span></div>
+                    <h3 class="skill-category" data-i18n="skills_tools">Инструменты</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="40" height="40" loading="lazy" decoding="async"><span>Git</span></div>
+                        <div class="skill-card"><img src="assets/renpy.png" alt="Ren'Py" width="40" height="40" loading="lazy" decoding="async" style="object-fit: contain;"><span>Ren'Py</span></div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="content-section" id="projects">
             <h2 class="section-title" data-i18n="projects_title">Проекты</h2>
-            <div class="card win98-window">
+            <div class="card win98-window" data-win="projects">
                 <div class="win98-titlebar">
-                    <span>Projects.exe</span>
-                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                    <span class="win-title"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg>Projects.exe</span>
+                    <div class="win98-controls"><button type="button" data-win-act="min" aria-label="Minimize">_</button><button type="button" data-win-act="max" aria-label="Maximize">□</button><button type="button" data-win-act="close" aria-label="Close">×</button></div>
                 </div>
-                <div class="cassette-shelf">
-                    <div class="cassette active">
-                        <div class="cassette-spine"><span class="cassette-title">JapNameGenerator</span></div>
-                        <div class="cassette-card">
-                            <h3>JapNameGenerator</h3>
-                            <p data-i18n="project_japname_desc">Простой, но душевный генератор...</p>
-                            <a href="https://github.com/EkeVoki/JapNameGenerator" target="_blank" data-i18n="project_open">Открыть на GitHub</a>
+                <div class="win-body">
+                    <div class="cassette-shelf">
+                        <div class="cassette active" tabindex="0">
+                            <div class="cassette-spine"><span class="cassette-title">JapNameGenerator</span></div>
+                            <div class="cassette-card">
+                                <h3>JapNameGenerator</h3>
+                                <p data-i18n="project_japname_desc">Простой, но душевный генератор...</p>
+                                <a href="https://github.com/EkeVoki/JapNameGenerator" target="_blank" rel="noopener noreferrer" data-i18n="project_open">Открыть на GitHub</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette disabled"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
-                    <div class="cassette end-card">
-                        <div class="cassette-spine"><span class="cassette-title">Конец</span></div>
-                        <div class="cassette-card end-card-info">
-                            <h3>О ты долистал до конца?</h3>
-                            <p>Да, тут нет проекта. Пока. Но будет. Что это будет? Может быть что-то полезное, может прикол сделанный за час - кто знает.</p>
-                            <p>Главное - что ты тут. Ну ладно, листай сайт дальше)</p>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette disabled" aria-disabled="true"><div class="cassette-spine"><span class="cassette-title">???</span></div></div>
+                        <div class="cassette end-card" tabindex="0">
+                            <div class="cassette-spine"><span class="cassette-title" data-i18n="end_spine">Конец</span></div>
+                            <div class="cassette-card end-card-info">
+                                <h3 data-i18n="end_title">О ты долистал до конца?</h3>
+                                <p data-i18n="end_p1">Да, тут нет проекта. Пока. Но будет. Что это будет? Может быть что-то полезное, может прикол сделанный за час - кто знает.</p>
+                                <p data-i18n="end_p2">Главное - что ты тут. Ну ладно, листай сайт дальше)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,105 +216,107 @@
 
         <section class="content-section" id="friends">
             <h2 class="section-title" data-i18n="friends_title">Друзья</h2>
-            <div class="card win98-window">
+            <div class="card win98-window" data-win="friends">
                 <div class="win98-titlebar">
-                    <span>Friends.exe</span>
-                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                    <span class="win-title"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Friends.exe</span>
+                    <div class="win98-controls"><button type="button" data-win-act="min" aria-label="Minimize">_</button><button type="button" data-win-act="max" aria-label="Maximize">□</button><button type="button" data-win-act="close" aria-label="Close">×</button></div>
                 </div>
-                <div class="friends-grid">
-                    <!-- ВЕНИАМИН -->
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/venya.jpg" alt="Veniamin"><span class="badge-icon">⭐</span></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_venya_name">Вениамин <span class="friend-badge best">BEST</span></h3>
-                            <p class="friend-role">cutodme</p>
-                            <p class="friend-desc" data-i18n="friend_venya_desc">Мой брат...</p>
-                            <div class="friend-links"><a href="https://t.me/cutodme" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                <div class="win-body">
+                    <div class="friends-grid">
+                        <!-- ВЕНИАМИН -->
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/venya.jpg" alt="Veniamin" width="70" height="70" loading="lazy" decoding="async"><span class="badge-icon star"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_venya_name">Вениамин <span class="friend-badge best">BEST</span></h3>
+                                <p class="friend-role">cutodme</p>
+                                <p class="friend-desc" data-i18n="friend_venya_desc">Мой брат...</p>
+                                <div class="friend-links"><a href="https://t.me/cutodme" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- ВАДИМ -->
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/vadim.jpg" alt="VAI"><span class="badge-icon">⭐</span></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_vadim_name">Вадим <span class="friend-badge best">BEST</span></h3>
-                            <p class="friend-role">VAI</p>
-                            <p class="friend-desc" data-i18n="friend_vadim_desc">Классный одноклассник...</p>
-                            <div class="friend-links">
-                                <a href="https://t.me/VAI_Programmer" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-                                <a href="https://github.com/Vadim-Khristenko" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        <!-- ВАДИМ -->
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/vadim.jpg" alt="VAI" width="70" height="70" loading="lazy" decoding="async"><span class="badge-icon star"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_vadim_name">Вадим <span class="friend-badge best">BEST</span></h3>
+                                <p class="friend-role">VAI</p>
+                                <p class="friend-desc" data-i18n="friend_vadim_desc">Классный одноклассник...</p>
+                                <div class="friend-links">
+                                    <a href="https://t.me/VAI_Programmer" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a>
+                                    <a href="https://github.com/Vadim-Khristenko" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- КРИСТОФЕР -->
+                        <div class="friend-card special">
+                            <div class="friend-avatar-wrap special-avatar" tabindex="0">
+                                <img src="assets/friends/christopher.jpg" alt="Christopher" width="70" height="70" loading="lazy" decoding="async">
+                                <span class="badge-icon heart"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span>
+                                <div class="love-overlay" data-i18n="love_her">Люблю её</div>
+                            </div>
+                            <div class="friend-info">
+                                <h3>Christopher</h3>
+                                <p class="friend-role">ChristopherBangBang</p>
+                                <p class="friend-desc" data-i18n="friend_chris_desc">Талантливая художница...</p>
+                                <div class="friend-links"><a href="https://t.me/ChristopherBang_Bang" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
+                            </div>
+                        </div>
+
+                        <!-- СЕРГЕЙ -->
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/sergey.jpg" alt="Sergey" width="70" height="70" loading="lazy" decoding="async"><span class="badge-icon star"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_sergey_name">Сергей <span class="friend-badge best">BEST</span></h3>
+                                <p class="friend-role">sergkkz</p>
+                                <p class="friend-desc" data-i18n="friend_sergey_desc">Друг детства...</p>
+                                <div class="friend-links"><a href="https://t.me/sergkkz" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
+                            </div>
+                        </div>
+
+                        <!-- ВИТЯ -->
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/vity.jpg" alt="Vitya" width="70" height="70" loading="lazy" decoding="async"><span class="badge-icon star"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_vitya_name">Витя <span class="friend-badge best">BEST</span></h3>
+                                <p class="friend-role">pevpootkruvatel</p>
+                                <p class="friend-desc" data-i18n="friend_vitya_desc">Клевый чувак...</p>
+                                <div class="friend-links"><a href="https://t.me/pevpootkruvatel" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- КРИСТОФЕР -->
-                    <div class="friend-card special">
-                        <div class="friend-avatar-wrap special-avatar">
-                            <img src="assets/friends/christopher.jpg" alt="Christopher">
-                            <span class="badge-icon heart">❤️</span>
-                            <div class="love-overlay" data-i18n="love_her">Люблю её</div>
+                    <!-- ЗНАКОМЫЕ -->
+                    <h2 class="section-title sub-title" data-i18n="acquaintances_title">Знакомые</h2>
+                    <div class="friends-grid">
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/leon.jpg" alt="Leon" width="70" height="70" loading="lazy" decoding="async"></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_leon_name">Леон</h3>
+                                <p class="friend-role">V0LTA</p>
+                                <p class="friend-desc" data-i18n="friend_leon_desc">Крутой чувак...</p>
+                                <div class="friend-links"><a href="https://t.me/V0LTA" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
+                            </div>
                         </div>
-                        <div class="friend-info">
-                            <h3>Christopher</h3>
-                            <p class="friend-role">ChristopherBangBang</p>
-                            <p class="friend-desc" data-i18n="friend_chris_desc">Талантливая художница...</p>
-                            <div class="friend-links"><a href="https://t.me/ChristopherBang_Bang" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/maxim.jpg" alt="Maxim" width="70" height="70" loading="lazy" decoding="async"></div>
+                            <div class="friend-info">
+                                <h3 data-i18n-html="friend_maxim_name">Максим</h3>
+                                <p class="friend-role">babochax</p>
+                                <p class="friend-desc" data-i18n="friend_maxim_desc">Одноклассник...</p>
+                                <div class="friend-links"><a href="https://t.me/babochax" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- СЕРГЕЙ -->
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/sergey.jpg" alt="Sergey"><span class="badge-icon">⭐</span></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_sergey_name">Сергей <span class="friend-badge best">BEST</span></h3>
-                            <p class="friend-role">sergkkz</p>
-                            <p class="friend-desc" data-i18n="friend_sergey_desc">Друг детства...</p>
-                            <div class="friend-links"><a href="https://t.me/sergkkz" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
-                        </div>
-                    </div>
-
-                    <!-- ВИТЯ -->
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/vity.jpg" alt="Vitya"><span class="badge-icon">⭐</span></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_vitya_name">Витя <span class="friend-badge best">BEST</span></h3>
-                            <p class="friend-role">pevpootkruvatel</p>
-                            <p class="friend-desc" data-i18n="friend_vitya_desc">Клевый чувак...</p>
-                            <div class="friend-links"><a href="https://t.me/pevpootkruvatel" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ЗНАКОМЫЕ -->
-                <h2 class="section-title" style="margin-top: 3rem;" data-i18n="acquaintances_title">Знакомые</h2>
-                <div class="friends-grid">
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/leon.jpg" alt="Leon"></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_leon_name">Леон</h3>
-                            <p class="friend-role">V0LTA</p>
-                            <p class="friend-desc" data-i18n="friend_leon_desc">Крутой чувак...</p>
-                            <div class="friend-links"><a href="https://t.me/V0LTA" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
-                        </div>
-                    </div>
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/maxim.jpg" alt="Maxim"></div>
-                        <div class="friend-info">
-                            <h3 data-i18n="friend_maxim_name">Максим</h3>
-                            <p class="friend-role">babochax</p>
-                            <p class="friend-desc" data-i18n="friend_maxim_desc">Одноклассник...</p>
-                            <div class="friend-links"><a href="https://t.me/babochax" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a></div>
-                        </div>
-                    </div>
-                    <div class="friend-card">
-                        <div class="friend-avatar-wrap"><img src="assets/friends/svytaslav.jpg" alt="DevSvytaslav"></div>
-                        <div class="friend-info">
-                            <h3>DevSvytaslav</h3>
-                            <p class="friend-role">Svyatik25</p>
-                            <p class="friend-desc" data-i18n="friend_slava_desc">Классный молодой программист...</p>
-                            <div class="friend-links">
-                                <a href="https://t.me/Svyatik25" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-                                <a href="https://github.com/DevSvyatoslav" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        <div class="friend-card">
+                            <div class="friend-avatar-wrap"><img src="assets/friends/svytaslav.jpg" alt="DevSvytaslav" width="70" height="70" loading="lazy" decoding="async"></div>
+                            <div class="friend-info">
+                                <h3>DevSvytaslav</h3>
+                                <p class="friend-role">Svyatik25</p>
+                                <p class="friend-desc" data-i18n="friend_slava_desc">Классный молодой программист...</p>
+                                <div class="friend-links">
+                                    <a href="https://t.me/Svyatik25" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a>
+                                    <a href="https://github.com/DevSvyatoslav" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -278,28 +326,28 @@
 
         <section class="content-section" id="contacts">
             <h2 class="section-title" data-i18n="contacts_title">Контакты</h2>
-            <div class="card win98-window">
+            <div class="card win98-window" data-win="contacts">
                 <div class="win98-titlebar">
-                    <span>Contacts.exe</span>
-                    <div class="win98-controls"><span>_</span><span>□</span><span>X</span></div>
+                    <span class="win-title"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Contacts.exe</span>
+                    <div class="win98-controls"><button type="button" data-win-act="min" aria-label="Minimize">_</button><button type="button" data-win-act="max" aria-label="Maximize">□</button><button type="button" data-win-act="close" aria-label="Close">×</button></div>
                 </div>
-                <div class="contacts-card" style="padding: 1rem;">
+                <div class="win-body contacts-card">
                     <p data-i18n="contacts_desc">Всегда открыт к общению и новым проектам!</p>
                     <div class="links" id="contact-links">
-                        <a href="https://github.com/EkeVoki" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
-                        <a href="https://t.me/Eke0Voki" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
-                        <a href="https://steamcommunity.com/id/EkeVoki/" target="_blank"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>Steam</a>
+                        <a href="https://github.com/EkeVoki" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+                        <a href="https://t.me/Eke0Voki" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>Telegram</a>
+                        <a href="https://steamcommunity.com/id/EkeVoki/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-steam"/></svg>Steam</a>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer id="main-footer">
         <div class="container">
             <p data-i18n="footer_text">© 2026 EkeVoki. Сделано за кружкой кофе.</p>
-            
-            <div id="cat-zone">
+
+            <div id="cat-zone" aria-hidden="true">
                 <div class="laptop-standalone">
                     <div class="screen-standalone">
                         <p id="cat-text"></p>
@@ -307,30 +355,64 @@
                 </div>
             </div>
 
-            <div id="birthday-cake" class="hidden" onclick="eatCake()">🎂</div>
-            <p id="cake-message" class="hidden" data-i18n="cake_lie">Торт — это ложь</p>
+            <button type="button" id="birthday-cake" data-action="cake" aria-label="Cake"><svg class="icon" aria-hidden="true"><use href="#i-cake"/></svg></button>
+            <p id="cake-message" data-i18n="cake_lie">Торт — это ложь</p>
         </div>
     </footer>
 
-    <div id="terminal-mode" class="terminal-hidden">
+    <!-- ТЕРМИНАЛ -->
+    <div id="terminal-mode" role="dialog" aria-label="Terminal">
         <div class="terminal-window">
-            <div class="terminal-header"><span>guest@ekevoki:~$</span><span class="term-close" onclick="setTheme('dark')">X</span></div>
-            <div class="terminal-body" id="term-output"><p>Welcome to EkeVoki OS v1.0. Type 'help' for commands.</p></div>
-            <div class="terminal-input-line"><span class="prompt">guest@ekevoki:~$</span><input type="text" id="term-input" autocomplete="off" autofocus></div>
+            <div class="terminal-header"><span>guest@ekevoki:~$</span><button type="button" class="term-close" data-action="term-exit" aria-label="Exit">X</button></div>
+            <div class="terminal-body" id="term-output"></div>
+            <div class="terminal-input-line"><span class="prompt">guest@ekevoki:~$</span><input type="text" id="term-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Terminal input"></div>
         </div>
     </div>
 
-    <div id="win98-taskbar" class="win98-hidden">
-        <button id="win98-start-btn" onclick="toggleWin98Menu()">
-            <img src="https://raw.githubusercontent.com/iamcal/emoji-data/master/img-apple-160/1fa9f.png" alt="Start" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
-            Пуск
+    <!-- WINDOWS 98: рабочий стол, панель задач, загрузка, выключение -->
+    <div id="win98-desktop" aria-label="Desktop">
+        <a class="d-icon" href="#about-text"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg><span>Info.exe</span></a>
+        <a class="d-icon" href="#skills"><svg class="icon" aria-hidden="true"><use href="#i-pc"/></svg><span>Skills.exe</span></a>
+        <a class="d-icon" href="#projects"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg><span>Projects.exe</span></a>
+        <a class="d-icon" href="#friends"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>Friends.exe</span></a>
+        <a class="d-icon" href="#contacts"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contacts.exe</span></a>
+    </div>
+
+    <div id="win98-taskbar">
+        <button type="button" id="win98-start-btn" data-action="start" aria-haspopup="true" aria-expanded="false">
+            <svg class="icon win-logo" aria-hidden="true"><use href="#i-win"/></svg><span data-i18n="win_start">Пуск</span>
         </button>
-        <div id="win98-start-menu" class="win98-hidden">
-            <div class="win98-menu-item" onclick="setTheme('dark')">Сменить тему на стандартную</div>
-            <div class="win98-menu-item" onclick="setTheme('mac')">Сменить тему на Mac</div>
-            <div class="win98-menu-item" onclick="setTheme('miku')">Сменить тему на Miku</div>
-            <div class="win98-menu-item" onclick="setTheme('sakura')">Сменить тему на Sakura</div>
+        <div class="task-sep"></div>
+        <div id="win98-tasks"></div>
+        <div class="win98-tray"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span id="tray-time">00:00</span></div>
+
+        <div id="win98-start-menu" role="menu">
+            <div class="start-side"><span>Windows<b>98</b></span></div>
+            <div class="start-items">
+                <div class="start-group" data-i18n="win_themes">Темы</div>
+                <button type="button" class="win98-menu-item" role="menuitem" data-theme="dark"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg>Start Theme</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-theme="mac"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Mac</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-theme="miku"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg>Miku</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-theme="sakura"><svg class="icon" aria-hidden="true"><use href="#i-flower"/></svg>Sakura</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-theme="terminal"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Terminal</button>
+                <div class="start-sep"></div>
+                <div class="start-group" data-i18n="win_lang">Язык</div>
+                <button type="button" class="win98-menu-item" role="menuitem" data-lang="ru"><span class="lang-code">RU</span>Русский</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-lang="en"><span class="lang-code">EN</span>English</button>
+                <button type="button" class="win98-menu-item" role="menuitem" data-lang="zh"><span class="lang-code">中</span>中文</button>
+                <div class="start-sep"></div>
+                <button type="button" class="win98-menu-item" role="menuitem" data-action="shutdown"><svg class="icon" aria-hidden="true"><use href="#i-pc"/></svg><span data-i18n="win_shutdown">Завершение работы...</span></button>
+            </div>
         </div>
+    </div>
+
+    <div id="win98-boot" aria-hidden="true">
+        <div class="boot-logo"><svg class="icon" aria-hidden="true"><use href="#i-win"/></svg><span>Windows<b>98</b></span></div>
+        <div class="boot-bar"><i></i></div>
+    </div>
+    <div id="win98-shutdown" data-action="shutdown-back" role="button" tabindex="0">
+        <p data-i18n="win_shutdown_msg">Теперь питание компьютера можно отключить.</p>
+        <small data-i18n="win_shutdown_hint">(нажмите, чтобы вернуться)</small>
     </div>
 
     <script src="script.js"></script>
